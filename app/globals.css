@@ -92,7 +92,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .hero-content { min-width: 0; align-self: center; padding: 56px clamp(24px, 4vw, 58px); text-align: left; }
 .hero-content p { margin: 8px 0; }
 .hero-content > p:first-child { color: var(--blue); font-size: 15px; font-weight: 700; }
-.hero-content h1 { margin: 8px 0; color: var(--blue); font-size: clamp(38px, 5vw, 62px); line-height: 1.12; }
+.hero-content .hero-brand { margin: 8px 0; color: var(--blue); font-size: clamp(38px, 5vw, 62px); font-weight: 700; line-height: 1.12; }
+.hero-content h1 { margin: 14px 0 8px; color: var(--blue-dark); font-size: clamp(17px, 1.6vw, 20px); font-weight: 700; line-height: 1.45; }
 .hero-content .hero-tagline { margin: 14px 0; font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.4; }
 .hero-content .button { margin-top: 14px; }
 .section-space { padding-block: 68px; }
@@ -172,7 +173,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .footer-grid li { padding: 3px 0; }
 .footer-grid a:hover { text-decoration: underline; }
 .footer-cert { width: 70px; height: 70px; object-fit: contain; }
-.dmca { margin-top: 22px; }
 .copyright { min-height: 53px; display: flex; align-items: center; border-top: 1px solid rgb(255 255 255 / 14%); background: #102643; color: #dfe8f3; font-size: 12px; }
 .copyright strong { margin-left: 3px; }
 .quick-contact { position: fixed; z-index: 1002; left: max(12px, env(safe-area-inset-left)); bottom: max(12px, env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; }
@@ -220,6 +220,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .consultation-form textarea { min-height: 120px; resize: vertical; }
 .consultation-form .button { justify-self: start; min-height: 45px; padding-inline: 20px; }
 .consultation-form .form-status:empty { display: none; }
+
+.faq { min-height: 0; background: #fff; }
+.faq .section-title { margin-bottom: 26px; }
+.faq-list { max-width: 900px; margin: 0 auto; }
+.faq-list details { border-bottom: 1px solid #e3e8ee; }
+.faq-list details:first-child { border-top: 1px solid #e3e8ee; }
+.faq-list summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 15px 4px; cursor: pointer; list-style: none; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; flex: 0 0 auto; color: var(--orange); font-size: 24px; font-weight: 700; line-height: 1; }
+.faq-list details[open] summary::after { content: "−"; }
+.faq-list summary h3 { margin: 0; color: var(--blue); font-size: 17px; line-height: 1.45; }
+.faq-list details p { max-width: 80ch; margin: 0; padding: 0 4px 16px; color: #444; font-size: 15px; line-height: 1.7; }
+.faq-list a { color: var(--blue); text-decoration: underline; }
+.faq-contact { margin: 22px 0 0; color: var(--blue); font-size: 16px; text-align: center; }
+.faq-contact a { font-weight: 700; }
+.footer-tax { font-size: 14px; }
 
 @media (max-width: 1100px) {
   .nav-row { gap: 15px; }
@@ -296,6 +312,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .news { min-height: 0; padding-block: 31px; }
   .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
   .news-grid h3 { padding: 9px; font-size: 14px; line-height: 1.45; }
+  .faq { padding-block: 31px; }
+  .faq-list summary h3 { font-size: 16px; }
   .contact { min-height: 0; padding-block: 37px; }
   .contact h2 { margin-bottom: 18px; font-size: 22px; }
   .contact-form { gap: 10px; padding: 17px; }

@@ -11,41 +11,96 @@ import { QuickContact } from "@/components/QuickContact";
 import { ServicesSection } from "@/components/ServicesSection";
 import { TrustSection } from "@/components/TrustSection";
 import { WorkflowSection } from "@/components/WorkflowSection";
-import { COMPANY, SERVICES } from "@/data/site";
+import { FaqSection } from "@/components/FaqSection";
+import { COMPANY, FAQ_ITEMS, SERVICES } from "@/data/site";
+import { PAGE_DESCRIPTION } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
+const siteUrlString = siteUrl?.toString();
+const absolute = (path: string) => (siteUrl ? new URL(path, siteUrl).toString() : undefined);
+const organizationId = siteUrlString ? `${siteUrlString}#organization` : undefined;
+
+const businessNode = {
+  "@type": "ProfessionalService",
+  ...(organizationId ? { "@id": organizationId } : {}),
+  name: COMPANY.name,
+  alternateName: COMPANY.shortName,
+  legalName: COMPANY.name,
+  description: PAGE_DESCRIPTION,
+  taxID: COMPANY.taxId,
+  foundingDate: COMPANY.foundingDate,
+  telephone: COMPANY.phoneE164,
+  ...(siteUrlString ? { url: siteUrlString } : {}),
+  ...(siteUrl
+    ? {
+        logo: {
+          "@type": "ImageObject",
+          url: absolute("logo-ngoc-hoang-512.png"),
+          width: 512,
+          height: 512,
+        },
+        image: [absolute("og-ngoc-hoang.png"), absolute("logo-hero.webp")],
+      }
+    : {}),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: COMPANY.street,
+    addressLocality: COMPANY.ward,
+    addressRegion: COMPANY.region,
+    addressCountry: "VN",
+  },
+  areaServed: { "@type": "City", name: COMPANY.region },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: COMPANY.phoneE164,
+    contactType: "customer service",
+    areaServed: "VN",
+    availableLanguage: ["vi"],
+  },
+  knowsAbout: ["Bảo hiểm xã hội", "Bảo hiểm y tế", "Thành lập doanh nghiệp", "Kế toán thuế"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Dịch vụ của Ngọc Hoàng",
+    itemListElement: SERVICES.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.items.join("; "),
+        areaServed: { "@type": "City", name: COMPANY.region },
+        ...(organizationId ? { provider: { "@id": organizationId } } : {}),
+      },
+    })),
+  },
+};
+
+const websiteNode = siteUrlString
+  ? {
+      "@type": "WebSite",
+      "@id": `${siteUrlString}#website`,
+      url: siteUrlString,
+      name: COMPANY.shortName,
+      alternateName: COMPANY.name,
+      inLanguage: "vi-VN",
+      publisher: { "@id": organizationId },
+    }
+  : undefined;
+
+const faqNode = {
+  "@type": "FAQPage",
+  ...(siteUrlString ? { "@id": `${siteUrlString}#faq`, url: `${siteUrlString}#faq` } : {}),
+  inLanguage: "vi-VN",
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
 const businessJsonLd = JSON.stringify({
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      name: COMPANY.name,
-      description:
-        "Tư vấn thành lập doanh nghiệp, dịch vụ thuế, kế toán và nhân sự tại Đà Nẵng.",
-      telephone: COMPANY.phone,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: COMPANY.address,
-        addressLocality: COMPANY.city,
-        addressCountry: "VN",
-      },
-      areaServed: COMPANY.city,
-      ...(siteUrl ? { url: siteUrl.toString() } : {}),
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Dịch vụ Ngọc Hoàng",
-        itemListElement: SERVICES.map((service) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: service.title,
-            description: service.items.join("; "),
-          },
-        })),
-      },
-    },
-  ],
+  "@graph": [businessNode, ...(websiteNode ? [websiteNode] : []), faqNode],
 })
   .replace(/</g, "\\u003c")
   .replace(/>/g, "\\u003e")
@@ -67,6 +122,7 @@ export default function HomePage() {
         <PricingSection />
         <WorkflowSection />
         <NewsSection />
+        <FaqSection />
         <ContactSection />
       </main>
       <Footer />

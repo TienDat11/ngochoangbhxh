@@ -64,7 +64,7 @@ export function ConsultationModal() {
           <span aria-hidden="true">×</span>
         </button>
         <h2 id="consultation-title">GỬI YÊU CẦU TƯ VẤN</h2>
-        <p className="consultation-subtitle"><strong>Tư vấn thành lập công ty, thuế và kế toán</strong></p>
+        <p className="consultation-subtitle"><strong>Tư vấn BHXH, BHYT, thành lập công ty, thuế và kế toán</strong></p>
         <ConsultationForm variant="modal" />
       </section>
     </div>

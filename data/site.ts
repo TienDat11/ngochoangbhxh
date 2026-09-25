@@ -5,6 +5,7 @@ export interface NavigationLink {
 export interface Service {
   title: string;
   image: string;
+  alt: string;
   items: readonly string[];
 }
 
@@ -18,17 +19,31 @@ export interface WorkflowStep {
   title: string;
   description: string;
   image: string;
+  alt: string;
 }
 
 export interface NewsItem {
   title: string;
   image: string;
+  alt: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 export const COMPANY = {
   name: "CÔNG TY TNHH TƯ VẤN & DỊCH VỤ NGỌC HOÀNG",
+  shortName: "Ngọc Hoàng",
+  taxId: "0402357190",
+  foundingDate: "2026-09-21",
+  street: "Thôn Phước Khương",
+  ward: "Xã Bà Nà",
+  region: "Đà Nẵng",
   address: "Thôn Phước Khương, xã Bà Nà",
   city: "Thành phố Đà Nẵng",
+  phoneE164: "+84963548333",
   phone: "0963 548 333",
   phoneHref: "tel:+84963548333",
   hotline: "0963 548 333",
@@ -37,20 +52,35 @@ export const COMPANY = {
   email: "",
 } as const;
 
+/** Ngày cập nhật nội dung gần nhất, dùng cho lastModified trong sitemap. */
+export const CONTENT_UPDATED_AT = "2026-09-25";
+
 export const NAVIGATION: readonly NavigationLink[] = [
   { label: "Trang chủ", href: "#top" },
   { label: "Giới thiệu", href: "#gioi-thieu" },
   { label: "Dịch vụ", href: "#dich-vu" },
   { label: "Tư Vấn Lập Công Ty", href: "#thanh-lap" },
   { label: "Chia sẻ", href: "#co-hoi-moi" },
-  { label: "Faqs", href: "#quy-trinh" },
+  { label: "Hỏi đáp", href: "#faq" },
   { label: "Liên hệ", href: "#lien-he" },
 ];
 
 export const SERVICES: readonly Service[] = [
   {
+    title: "DỊCH VỤ BẢO HIỂM XÃ HỘI (BHXH) & BHYT",
+    image: "/assets/employee-300x300-b0d92d6c.png",
+    alt: "Biểu tượng người lao động – dịch vụ BHXH và BHYT tại Đà Nẵng",
+    items: [
+      "Đăng ký tham gia, báo tăng, báo giảm lao động BHXH cho doanh nghiệp",
+      "Hướng dẫn đăng ký đóng BHXH tự nguyện cho cá nhân",
+      "Gia hạn, mua mới BHYT hộ gia đình",
+      "Hướng dẫn hồ sơ hưởng các chế độ BHXH; điều chỉnh thông tin, cấp lại sổ BHXH",
+    ],
+  },
+  {
     title: "DỊCH VỤ PHÁP LÝ DOANH NGHIỆP",
     image: "/assets/company-300x300-57c03f3f.png",
+    alt: "Biểu tượng tòa nhà văn phòng – dịch vụ thành lập doanh nghiệp tại Đà Nẵng",
     items: [
       "Tư vấn thủ tục thành lập doanh nghiệp trong nước",
       "Thành lập chi nhánh, văn phòng đại diện và đơn vị phụ thuộc",
@@ -60,6 +90,7 @@ export const SERVICES: readonly Service[] = [
   {
     title: "DỊCH VỤ THUẾ",
     image: "/assets/tax-300x300-ca352e40.png",
+    alt: "Biểu tượng tờ khai thuế – dịch vụ kê khai và quyết toán thuế",
     items: [
       "Kê khai thuế",
       "Rà soát tính tuân thủ pháp luật thuế",
@@ -70,23 +101,26 @@ export const SERVICES: readonly Service[] = [
   {
     title: "DỊCH VỤ KẾ TOÁN",
     image: "/assets/accounting-300x300-2b340415.png",
+    alt: "Biểu tượng máy tính tiền và bút – dịch vụ kế toán thuế trọn gói",
     items: [
       "Kế toán thuế trọn gói; tư vấn, thiết lập hệ thống kế toán",
       "Kiểm tra, hoàn thiện sổ sách kế toán; lập báo cáo tài chính cuối năm; đánh giá nhanh báo cáo tài chính, quyết toán cuối năm và lập hóa đơn GTGT",
     ],
   },
   {
-    title: "DỊCH VỤ NHÂN SỰ",
-    image: "/assets/employee-300x300-b0d92d6c.png",
+    title: "DỊCH VỤ NHÂN SỰ & TIỀN LƯƠNG",
+    image: "/assets/accounting-1-300x300-32be194d.png",
+    alt: "Biểu tượng nhân viên tính lương – dịch vụ nhân sự và tiền lương",
     items: [
-      "Dịch vụ nhân sự ban đầu, bao gồm bảo hiểm xã hội (BHXH)",
+      "Dịch vụ nhân sự ban đầu cho doanh nghiệp mới thành lập",
       "Dịch vụ tính lương",
-      "Theo dõi trích nộp BHXH và thuế thu nhập cá nhân (TNCN)",
+      "Theo dõi trích nộp BHXH, BHYT và thuế thu nhập cá nhân (TNCN)",
     ],
   },
   {
     title: "GIẢI PHÁP HỖ TRỢ DOANH NGHIỆP",
-    image: "/assets/accounting-1-300x300-32be194d.png",
+    image: "/assets/tax-1-300x300-9799d5c8.png",
+    alt: "Biểu tượng phong bì hóa đơn – chữ ký số, hóa đơn điện tử cho doanh nghiệp",
     items: [
       "Đại lý chữ ký số, hóa đơn điện tử và phần mềm kê khai BHXH (đối tác Viettel)",
       "Bảng hiệu và dấu tên",
@@ -97,32 +131,28 @@ export const SERVICES: readonly Service[] = [
 
 export const BENEFITS: readonly Benefit[] = [
   {
-    title: "Phục vụ khách hàng bằng cả trái tim",
-    description: "Tận tâm lắng nghe, đồng cảm và chủ động tư vấn để khách hàng an tâm.",
+    title: "Tận tâm với từng hồ sơ",
+    description: "Lắng nghe nhu cầu của từng cá nhân, hộ gia đình và doanh nghiệp, giải thích rõ các bước thủ tục trước khi thực hiện.",
   },
   {
-    title: "Kinh nghiệm chuyên môn",
-    description: "Đội ngũ kế toán trưởng có trên 10 năm kinh nghiệm qua nhiều lĩnh vực doanh nghiệp.",
+    title: "Am hiểu thủ tục BHXH và thuế",
+    description: "Đội ngũ tư vấn am hiểu thủ tục BHXH, BHYT, thuế và kế toán, hướng dẫn hồ sơ theo quy định hiện hành.",
   },
   {
-    title: "Chi phí hợp lý, trọn gói",
-    description: "Chính sách giá phù hợp, trọn gói không phát sinh phụ phí ngoài sản phẩm cộng thêm.",
+    title: "Báo giá rõ ràng trước khi làm",
+    description: "Phạm vi công việc và chi phí được thống nhất với khách hàng trước khi thực hiện.",
   },
   {
-    title: "Trách nhiệm và tuân thủ",
-    description: "Cam kết chịu trách nhiệm với sai sót do nhân sự Ngọc Hoàng và luôn tuân thủ pháp luật.",
+    title: "Minh bạch và tuân thủ pháp luật",
+    description: "Làm việc đúng quy định, bảo mật thông tin khách hàng và chịu trách nhiệm với phần việc Ngọc Hoàng đảm nhận.",
   },
   {
-    title: "Cập nhật quy định kịp thời",
-    description: "Theo dõi sự thay đổi liên tục của quy định thuế và các quy định liên quan.",
+    title: "Theo dõi quy định mới",
+    description: "Thường xuyên cập nhật thay đổi về BHXH, BHYT, thuế và kế toán để tư vấn kịp thời.",
   },
   {
-    title: "Được đào tạo bài bản",
-    description: "Đội ngũ được đào tạo về chuyên môn, kỹ năng và đạo đức nghề nghiệp.",
-  },
-  {
-    title: "Đồng hành ổn định",
-    description: "Trưởng bộ phận làm việc tại Ngọc Hoàng từ 5 năm trở lên.",
+    title: "Gần gũi, dễ liên hệ",
+    description: "Hỗ trợ khách hàng tại Đà Nẵng qua điện thoại và Zalo 0963 548 333.",
   },
 ];
 
@@ -132,25 +162,29 @@ export const WORKFLOW_STEPS: readonly WorkflowStep[] = [
     title: "TIẾP NHẬN THÔNG TIN",
     description:
       "Lắng nghe nhu cầu, khó khăn và thông tin doanh nghiệp để xác định nội dung cần tư vấn.",
-    image: "/assets/1-1-6ec7cdde.jpg",
+    image: "/assets/quy-trinh-01.jpg",
+    alt: "Bước 01 – tiếp nhận thông tin và nhu cầu của khách hàng",
   },
   {
     title: "TIẾN HÀNH XỬ LÝ",
     description:
       "Thực hiện công việc theo quy trình dịch vụ, tuân thủ quy định pháp luật liên quan.",
-    image: "/assets/2-1-b317dd30.jpg",
+    image: "/assets/quy-trinh-02.jpg",
+    alt: "Bước 02 – đội ngũ Ngọc Hoàng tiến hành xử lý hồ sơ",
   },
   {
     title: "CẬP NHẬT TIẾN ĐỘ",
     description:
       "Phản hồi tiến độ xử lý và chủ động trao đổi khi khách hàng cần được tư vấn.",
-    image: "/assets/3-6f1fd527.jpg",
+    image: "/assets/quy-trinh-03.jpg",
+    alt: "Bước 03 – cập nhật tiến độ xử lý cho khách hàng",
   },
   {
     title: "HOÀN TRẢ HỒ SƠ",
     description:
       "Bàn giao hồ sơ để khách hàng lưu trữ sau khi hoàn thành công việc.",
-    image: "/assets/4-62414391.jpg",
+    image: "/assets/quy-trinh-04.jpg",
+    alt: "Bước 04 – bàn giao, hoàn trả hồ sơ cho khách hàng",
   },
 ];
 
@@ -158,18 +192,55 @@ export const NEWS_ITEMS: readonly NewsItem[] = [
   {
     title: "Loại hình Công ty TNHH một thành viên",
     image: "/assets/tnhh-mtv-500x281-9062b88d.jpg",
+    alt: "Tòa nhà văn phòng – minh họa bài viết về công ty TNHH một thành viên",
   },
   {
     title: "Quy định về hưởng chế độ ốm đau đối với người lao động",
     image: "/assets/che-do-om-dau-500x281-49bc54a6.jpg",
+    alt: "Người lao động bị ốm tại văn phòng – minh họa chế độ ốm đau BHXH",
   },
   {
     title: "Quy định về trợ cấp mất việc làm",
     image: "/assets/tro-cap-mat-viec-500x281-74822570.jpg",
+    alt: "Ký văn bản chấm dứt hợp đồng – minh họa trợ cấp mất việc làm",
   },
   {
     title: "Các khoản phụ cấp tính đóng và không tính đóng BHXH 2026",
     image: "/assets/pc-dong-bhxh-500x281-86540f91.jpg",
+    alt: "Bàn tay che chở mô hình gia đình – minh họa phụ cấp tính đóng BHXH",
+  },
+];
+
+export const FAQ_ITEMS: readonly FaqItem[] = [
+  {
+    question: "Ngọc Hoàng hỗ trợ những thủ tục BHXH, BHYT nào tại Đà Nẵng?",
+    answer:
+      "Ngọc Hoàng hỗ trợ doanh nghiệp đăng ký tham gia, báo tăng, báo giảm lao động BHXH; hướng dẫn cá nhân đăng ký đóng BHXH tự nguyện; gia hạn, mua mới BHYT hộ gia đình; hướng dẫn hồ sơ hưởng các chế độ BHXH và thủ tục điều chỉnh thông tin, cấp lại sổ BHXH.",
+  },
+  {
+    question: "Ngọc Hoàng phục vụ cá nhân hay doanh nghiệp?",
+    answer:
+      "Ngọc Hoàng tư vấn cho cả cá nhân, hộ gia đình và doanh nghiệp. Với doanh nghiệp, dịch vụ BHXH có thể kết hợp cùng thành lập doanh nghiệp, kế toán thuế và tính lương.",
+  },
+  {
+    question: "Cần chuẩn bị giấy tờ gì khi làm thủ tục BHXH, BHYT?",
+    answer:
+      "Hồ sơ tùy thuộc vào từng thủ tục. Thông thường cần căn cước công dân và mã số BHXH (nếu đã có); với doanh nghiệp cần thêm thông tin đăng ký doanh nghiệp, danh sách và hợp đồng lao động. Ngọc Hoàng sẽ gửi danh sách hồ sơ cụ thể sau khi nắm rõ trường hợp của bạn.",
+  },
+  {
+    question: "Ngọc Hoàng hỗ trợ khách hàng ở khu vực nào?",
+    answer:
+      "Ngọc Hoàng có địa chỉ tại Thôn Phước Khương, xã Bà Nà, thành phố Đà Nẵng và hỗ trợ khách hàng trên địa bàn Đà Nẵng. Bạn có thể trao đổi trước qua điện thoại hoặc Zalo 0963 548 333.",
+  },
+  {
+    question: "Làm sao tự tra cứu quá trình đóng BHXH và thẻ BHYT?",
+    answer:
+      "Bạn có thể tra cứu trên Cổng thông tin điện tử BHXH Việt Nam (baohiemxahoi.gov.vn) hoặc ứng dụng VssID – Bảo hiểm xã hội số. Nếu thông tin chưa khớp, Ngọc Hoàng có thể hướng dẫn thủ tục điều chỉnh.",
+  },
+  {
+    question: "Chi phí dịch vụ BHXH, BHYT được tính như thế nào?",
+    answer:
+      "Chi phí phụ thuộc vào loại thủ tục và số lượng hồ sơ. Vui lòng gọi hoặc nhắn Zalo 0963 548 333 để được tư vấn và báo giá trước khi thực hiện.",
   },
 ];
 
@@ -177,6 +248,7 @@ export const FOOTER_LINK_GROUPS = [
   {
     title: "Dịch vụ",
     links: [
+      ["Dịch vụ BHXH, BHYT", "#dich-vu"],
       ["Tư vấn thành lập doanh nghiệp", "#dich-vu"],
       ["Dịch vụ Thuế", "#dich-vu"],
       ["Dịch vụ Kế toán", "#dich-vu"],
@@ -187,7 +259,7 @@ export const FOOTER_LINK_GROUPS = [
   {
     title: "Tin tức",
     links: [
-      ["Câu hỏi thường gặp", "#quy-trinh"],
+      ["Câu hỏi thường gặp", "#faq"],
       ["Liên hệ Ngọc Hoàng", "#lien-he"],
     ],
   },

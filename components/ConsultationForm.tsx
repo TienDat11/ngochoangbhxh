@@ -24,7 +24,7 @@ export function ConsultationForm({ variant }: ConsultationFormProps) {
       <label className="sr-only" htmlFor={`${prefix}-phone`}>Số điện thoại hoặc Zalo</label>
       <input id={`${prefix}-phone`} name="phone" type="tel" placeholder="Số điện thoại hoặc Zalo" autoComplete="tel" required />
       <label className="sr-only" htmlFor={`${prefix}-message`}>Nội dung cần tư vấn</label>
-      <textarea id={`${prefix}-message`} name="message" rows={modal ? 5 : 4} placeholder="Nội dung cần tư vấn (Ví dụ: thành lập doanh nghiệp tại Đà Nẵng)" required />
+      <textarea id={`${prefix}-message`} name="message" rows={modal ? 5 : 4} placeholder="Nội dung cần tư vấn (Ví dụ: đóng BHXH cho nhân viên, gia hạn BHYT hộ gia đình)" required />
       <button className="button button-orange" type="submit">GỬI YÊU CẦU TƯ VẤN</button>
       <p className="form-status" aria-live="polite">{status}</p>
     </form>

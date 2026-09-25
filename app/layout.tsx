@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { COMPANY } from "@/data/site";
+import { PAGE_DESCRIPTION, PAGE_TITLE } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
@@ -13,10 +14,10 @@ const quicksand = localFont({
 
 const siteUrl = getSiteUrl();
 const siteUrlString = siteUrl?.toString();
-const pageTitle = "Tư vấn doanh nghiệp, kế toán thuế tại Đà Nẵng | Ngọc Hoàng";
-const pageDescription =
-  "Ngọc Hoàng tư vấn thành lập doanh nghiệp, dịch vụ thuế, kế toán và nhân sự tại Đà Nẵng.";
+const pageTitle = PAGE_TITLE;
+const pageDescription = PAGE_DESCRIPTION;
 const socialImage = siteUrlString ? `${siteUrlString}og-ngoc-hoang.png` : undefined;
+const socialImageAlt = "Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng – dịch vụ BHXH, BHYT và kế toán thuế tại Đà Nẵng";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -25,12 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Ngọc Hoàng",
   },
   description: pageDescription,
-  keywords: [
-    "tư vấn thành lập doanh nghiệp",
-    "dịch vụ kế toán thuế",
-    "dịch vụ thuế doanh nghiệp",
-    "Đà Nẵng",
-  ],
+  applicationName: COMPANY.shortName,
   authors: [{ name: COMPANY.name }],
   creator: COMPANY.name,
   publisher: COMPANY.name,
@@ -44,7 +40,7 @@ export const metadata: Metadata = {
     ...(siteUrlString
       ? {
           url: siteUrlString,
-          images: [{ url: socialImage!, width: 1200, height: 630, alt: "Logo Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng" }],
+          images: [{ url: socialImage!, width: 1200, height: 630, alt: socialImageAlt }],
         }
       : {}),
   },
@@ -52,11 +48,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
-    ...(socialImage ? { images: [{ url: socialImage, alt: "Logo Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng" }] } : {}),
+    ...(socialImage ? { images: [{ url: socialImage, alt: socialImageAlt }] } : {}),
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

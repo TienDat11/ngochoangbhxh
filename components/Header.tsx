@@ -38,7 +38,7 @@ export function Header() {
             <span className="menu-icon" aria-hidden="true"><i /><i /><i /></span>
           </button>
           <a className="brand" href="#top" aria-label="Ngọc Hoàng — Trang chủ">
-            <img src={getPublicAssetPath("/logo-ngoc-hoang.svg")} width="1254" height="1254" alt="Biểu trưng Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng" />
+            <img src={getPublicAssetPath("/logo-ngoc-hoang-256.png")} width="256" height="256" alt="Biểu trưng Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng" />
           </a>
           <nav className={`primary-nav${menuOpen ? " is-open" : ""}`} id="primary-nav" aria-label="Điều hướng chính">
             {NAVIGATION.map((item) => (
