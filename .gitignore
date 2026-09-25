@@ -1,0 +1,16 @@
+node_modules/
+.next/
+/out/
+build/
+dist/
+coverage/
+.cache/
+*.log
+*.tmp
+.env*
+!.env.example
+*.tsbuildinfo
+/screenshots/
+/.backup-icons-*/
+AGENTS.md
+CLAUDE.md
