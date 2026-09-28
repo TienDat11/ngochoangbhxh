@@ -373,12 +373,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 @media (max-width: 1060px) {
-  :root { --nav-h: 73px; }
+  :root { --nav-h: 69px; }
   .topline-address { display: none; }
   .nav-row { position: relative; min-height: calc(var(--nav-h) - 1px); justify-content: space-between; gap: 12px; }
   .brand { position: absolute; left: 50%; transform: translateX(-50%); }
-  .brand img { width: 56px; }
-  .brand-text { display: none; }
+  /* Mobile/tablet: logo + chữ "NGỌC HOÀNG / TƯ VẤN & DỊCH VỤ" (thu nhỏ từ desktop), căn giữa giữa nút menu và nút gọi. */
+  .brand { gap: 8px; }
+  .brand img { width: 48px; }
+  .brand-text { display: grid; white-space: nowrap; }
+  .brand-name { font-size: 17px; }
+  .brand-sub { font-size: 10px; letter-spacing: .05em; }
   .menu-toggle { width: 48px; height: 48px; display: grid; place-items: center; padding: 7px; border: 0; background: transparent; cursor: pointer; }
   .menu-icon { width: 24px; display: grid; gap: 5px; }
   .menu-icon i { height: 2px; border-radius: 2px; background: var(--blue); transition: transform .15s ease, opacity .15s ease; }
@@ -410,6 +414,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 @media (max-width: 760px) {
   :root { --topline-h: 32px; }
+  .brand { gap: 6px; }
+  .brand img { width: 44px; }
+  .brand-name { font-size: 16px; }
   .quick-link span { position: absolute; right: 54px; display: none; }
   .quick-link { width: 46px; height: 46px; }
   .quick-link img { width: 24px; height: 24px; }
