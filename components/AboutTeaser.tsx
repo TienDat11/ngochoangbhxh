@@ -20,7 +20,12 @@ export function AboutTeaser() {
             <Link className="text-link" href={ROUTES.about}>Xem giới thiệu Ngọc Hoàng →</Link>
           </div>
         </div>
-        <StaffShowcase />
+      </div>
+      {/* Dải nền riêng (navy → sáng) cho thẻ nhân sự – tâm điểm của mục. */}
+      <div className="about-staff">
+        <div className="container">
+          <StaffShowcase />
+        </div>
       </div>
     </section>
   );
