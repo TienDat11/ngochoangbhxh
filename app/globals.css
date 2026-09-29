@@ -427,10 +427,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .about-contact, .svc-pricing { padding: 24px 26px; border: 1px solid #f3a02c; border-radius: 8px; background: #fffaf5; }
 .about-contact h2 { margin: 0 0 8px; color: var(--blue); font-size: 19px; line-height: 1.4; }
 .about-contact p { margin: 0; }
-.about-contact a { color: var(--blue); font-weight: 700; }
+/* Chỉ link trong đoạn chữ (số điện thoại) tô xanh; nút giữ màu chuẩn của .button-* (nút cam: chữ navy, đủ tương phản). */
+.about-contact p a { color: var(--blue); font-weight: 700; }
 .about-contact .button-row { justify-content: flex-start; margin-top: 16px; }
-.about-contact .button-orange { color: #fff; }
-.about-contact .button-blue { color: #fff; }
 
 /* ---------- Trang chi tiết dịch vụ (round 6, components/ServiceDetailPage.tsx) ---------- */
 .svc-banner h1 { max-width: 30ch; text-wrap: balance; }
