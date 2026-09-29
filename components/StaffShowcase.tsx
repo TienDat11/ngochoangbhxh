@@ -5,16 +5,18 @@ const photoPath = (photo: string, width: number) => getPublicAssetPath(`/staff/$
 const LARGEST = STAFF_PHOTO_WIDTHS[STAFF_PHOTO_WIDTHS.length - 1];
 
 /**
- * Slogan trong ngoặc kép. Hai vế "A — B": mỗi vế một khối (.staff-slogan-part, xuống dòng + cân dòng riêng) để không bị ngắt giữa vế.
+ * Slogan trong ngoặc kép (tô cam qua .staff-quote). Hai vế "A — B": mỗi vế một khối (.staff-slogan-part, xuống dòng + cân dòng riêng) để không bị ngắt giữa vế.
  * Câu chữ giữ nguyên; khoảng trắng sau dấu gạch nằm trong vế đầu nên văn bản đọc/sao chép vẫn liền mạch.
  */
 function sloganLines(slogan: string) {
+  const open = <span className="staff-quote">“</span>;
+  const close = <span className="staff-quote">”</span>;
   const [first, ...rest] = slogan.split(" — ");
-  if (!rest.length) return `“${slogan}”`;
+  if (!rest.length) return <>{open}{slogan}{close}</>;
   return (
     <>
-      <span className="staff-slogan-part">“{first} — </span>
-      <span className="staff-slogan-part">{rest.join(" — ")}”</span>
+      <span className="staff-slogan-part">{open}{first} — </span>
+      <span className="staff-slogan-part">{rest.join(" — ")}{close}</span>
     </>
   );
 }
