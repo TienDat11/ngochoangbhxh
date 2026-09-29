@@ -46,11 +46,15 @@ export function Hero() {
           </div>
         </div>
         <div className="hero-image">
+          {/* Ảnh chân dung (cắt từ ảnh dọc 683×1024 còn 683×640 quanh mặt/thân trên), khung ngang dùng object-fit: cover;
+              ảnh LCP của trang chủ → fetchPriority="high", srcSet để điện thoại tải bản nhỏ. */}
           <img
-            src={getPublicAssetPath("/logo-hero.webp")}
-            alt="Biểu trưng Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng – Tận tâm, chuyên nghiệp, hiệu quả"
-            width="1408"
-            height="768"
+            src={getPublicAssetPath("/hero-photo-480.webp")}
+            srcSet={`${getPublicAssetPath("/hero-photo-360.webp")} 360w, ${getPublicAssetPath("/hero-photo-480.webp")} 480w, ${getPublicAssetPath("/hero-photo-683.webp")} 683w`}
+            sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1060px) 45vw, 560px"
+            alt="Đại diện Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng"
+            width="683"
+            height="640"
             fetchPriority="high"
           />
           <HeroParallax />
