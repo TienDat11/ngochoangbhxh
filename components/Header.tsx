@@ -99,7 +99,7 @@ export function Header() {
             <span className={`menu-icon${menuOpen ? " is-open" : ""}`} aria-hidden="true"><i /><i /><i /></span>
           </button>
           <Link className="brand" href={ROUTES.home} aria-label={`${COMPANY.name} – Trang chủ`} onClick={closeAll}>
-            <img src={getPublicAssetPath("/logo-ngoc-hoang-256.png")} width="256" height="256" alt="Biểu trưng Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng" />
+            <img src={getPublicAssetPath("/logo-ngoc-hoang-128.png")} width="128" height="128" alt="Biểu trưng Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng" />
             <span className="brand-text">
               {/* Tên pháp nhân đầy đủ: "CÔNG TY TNHH TƯ VẤN & DỊCH VỤ" trên, "NGỌC HOÀNG" dưới. */}
               <span className="brand-sub">CÔNG TY TNHH TƯ VẤN &amp; DỊCH VỤ</span>

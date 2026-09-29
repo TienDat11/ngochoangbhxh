@@ -75,7 +75,14 @@ export default function AboutPage() {
             <div className="about-intro-grid">
               <p className="about-intro-text"><Rich text={ABOUT_INTRO} /></p>
               <figure className="about-intro-image">
-                <img src={getPublicAssetPath("/logo-hero.webp")} alt="Biểu trưng Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng – Tận tâm, chuyên nghiệp, hiệu quả" width="1408" height="768" />
+                <img
+                  src={getPublicAssetPath("/logo-hero-704.webp")}
+                  srcSet={`${getPublicAssetPath("/logo-hero-704.webp")} 704w, ${getPublicAssetPath("/logo-hero.webp")} 1408w`}
+                  sizes="(max-width: 760px) calc(100vw - 40px), 540px"
+                  alt="Biểu trưng Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng – Tận tâm, chuyên nghiệp, hiệu quả"
+                  width="1408"
+                  height="768"
+                />
               </figure>
             </div>
           </div>

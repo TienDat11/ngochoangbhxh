@@ -8,7 +8,7 @@ export function AboutTeaser() {
   return (
     <section className="about-teaser section-space" aria-labelledby="about-teaser-title">
       <div className="container about-teaser-inner">
-        <img className="about-teaser-mark" src={getPublicAssetPath("/logo-ngoc-hoang-256.png")} alt="" width="256" height="256" loading="lazy" />
+        <img className="about-teaser-mark" src={getPublicAssetPath("/logo-ngoc-hoang-192.png")} alt="" width="192" height="192" loading="lazy" />
         <div>
           <h2 id="about-teaser-title">Về {COMPANY.name}</h2>
           <p className="about-teaser-slogan">“{ABOUT_SLOGAN}”</p>
