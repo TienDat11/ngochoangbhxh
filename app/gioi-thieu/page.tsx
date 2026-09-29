@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { QuickContact } from "@/components/QuickContact";
 import { SectionTitle } from "@/components/SectionTitle";
+import { StaffShowcase } from "@/components/StaffShowcase";
 import {
   ABOUT_BENEFITS,
   ABOUT_BENEFITS_LEAD,
@@ -88,6 +89,7 @@ export default function AboutPage() {
                 />
               </figure>
             </div>
+            <StaffShowcase />
           </div>
         </section>
 
