@@ -28,13 +28,16 @@ import { COMPANY, ROUTES } from "@/data/site";
 import { getPublicAssetPath } from "@/lib/site-paths";
 import { pageMetadata, routeToPath } from "@/lib/seo";
 
-const title = "Giới thiệu Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng";
+// Title và description lấy nguyên văn tài liệu Word của khách hàng (tiêu đề tài liệu viết thường theo câu; khẩu hiệu +
+// phương châm, xem data/about.ts), không tự viết thêm. Title đã có tên công ty nên dùng absoluteTitle (không ghép
+// " | Ngọc Hoàng" lần nữa); 54 ký tự ≤ 60.
+const title = "Giới thiệu về Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng";
 const description =
-  "Giới thiệu Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng tại Đà Nẵng – Điểm tựa cho khởi đầu, Hài hòa cùng thịnh vượng. Dịch vụ thuế, kế toán và thành lập doanh nghiệp.";
+  "Điểm tựa cho khởi đầu – Hài hòa cùng thịnh vượng. Phục vụ Khách hàng bằng cả trái tim, đem đến cho Khách hàng sự an tâm tuyệt đối.";
 
 const PATH = routeToPath(ROUTES.about);
 
-export const metadata: Metadata = pageMetadata({ path: PATH, title, description });
+export const metadata: Metadata = pageMetadata({ path: PATH, title, description, absoluteTitle: true });
 
 function Rich({ text }: { text: RichText }) {
   return (
