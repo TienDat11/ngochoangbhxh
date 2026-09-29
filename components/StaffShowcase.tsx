@@ -22,7 +22,7 @@ function sloganLines(slogan: string) {
 /**
  * Thẻ nhân sự (ảnh, họ tên, chức danh, slogan) – dùng ở trang chủ (mục "Về chúng tôi") và trang Giới thiệu.
  * Ảnh nằm dưới màn hình đầu → loading="lazy"; `sizes` khớp bố cục trong globals.css (.staff-grid):
- * ≤760px thẻ ngang, ảnh rộng 120px; từ 761px lưới 3 cột trong khung tối đa 980px.
+ * ≤760px thẻ dọc toàn chiều rộng (tối đa 420px); từ 761px lưới 3 cột trong khung tối đa 1100px (khe 30px).
  */
 export function StaffShowcase() {
   return (
@@ -33,7 +33,7 @@ export function StaffShowcase() {
             <img
               src={photoPath(member.photo, 540)}
               srcSet={STAFF_PHOTO_WIDTHS.map((width) => `${photoPath(member.photo, width)} ${width}w`).join(", ")}
-              sizes="(max-width: 760px) 120px, (max-width: 1060px) calc((100vw - 88px) / 3), 310px"
+              sizes="(max-width: 760px) min(calc(100vw - 40px), 420px), (max-width: 1060px) calc((100vw - 100px) / 3), 347px"
               alt={`${member.name} – ${member.title}`}
               width={LARGEST}
               height={(LARGEST * 5) / 4}

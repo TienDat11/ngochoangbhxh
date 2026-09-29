@@ -190,23 +190,36 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .section-title { display: flex; align-items: center; justify-content: center; gap: 18px; }
 .section-title::before,
 .section-title::after { content: ""; flex: 1 1 40px; min-width: 40px; height: 2px; border-radius: 2px; background: currentColor; opacity: .18; }
-.about-teaser { background: linear-gradient(180deg, #fff 0%, #f3f7fc 100%); }
+.about-teaser { background: #fff; }
+.about-teaser.section-space { padding-bottom: 0; } /* dải nhân sự (.about-staff) tự có lề dưới */
 .about-teaser-inner { max-width: 980px; margin-inline: auto; display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 28px; padding: 28px 32px; border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 6px; background: #fbfcfe; }
 .about-teaser-mark { width: 96px; height: 96px; object-fit: contain; }
 .about-teaser-heading { margin: 0 0 6px; color: var(--blue); font-size: 20px; line-height: 1.35; }
 .about-teaser-slogan { margin: 0 0 6px; color: var(--orange); font-size: 17px; font-weight: 700; font-style: italic; }
 .about-teaser-inner p { margin: 0 0 10px; font-size: 15px; line-height: 1.65; }
-.about-teaser .staff-grid { margin-top: 30px; }
-/* Thẻ nhân sự (components/StaffShowcase.tsx): 3 cột, ảnh chân dung 4:5 trên, chữ dưới; ≤760px thẻ ngang (xem media query).
+/* Dải nhân sự trang chủ (.about-staff): nửa trên xanh navy (chấm mờ + quầng cam), nửa dưới nền sáng; thẻ nằm vắt qua ranh giới
+   nên là tâm điểm của mục. Trang trí thuần CSS (gradient), không ảnh nền. */
+.about-staff { position: relative; isolation: isolate; margin-top: 44px; padding: 64px 0 76px; background: #f3f7fc; }
+.about-staff::before { content: ""; position: absolute; z-index: -1; inset: 0 0 auto; height: 62%;
+  background:
+    radial-gradient(circle at 88% 18%, rgb(244 119 33 / 30%), transparent 34%),
+    radial-gradient(circle at 8% 90%, rgb(255 255 255 / 9%), transparent 30%),
+    radial-gradient(rgb(255 255 255 / 11%) 1px, transparent 1.6px) 0 0 / 22px 22px,
+    linear-gradient(155deg, #0b2747 0%, #123f72 55%, #105caa 100%); }
+.about-staff::after { content: ""; position: absolute; z-index: -1; top: 26px; left: 50%; width: 64px; height: 3px; border-radius: 3px; background: var(--orange); transform: translateX(-50%); }
+/* Thẻ nhân sự (components/StaffShowcase.tsx): ảnh chân dung 4:5 lớn, chữ căn giữa, chi tiết cam; ≤760px thẻ dọc xếp chồng.
    Chữ trong thẻ dùng `.staff-body .staff-*` để không bị kiểu `p` của section chứa (vd. .about-intro p) đè. */
-.staff-grid { max-width: 980px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0 auto; padding: 0; list-style: none; }
-.staff-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: 0 14px 30px -18px rgb(22 47 83 / 38%); }
-.staff-photo { aspect-ratio: 4 / 5; overflow: hidden; background: #e9eef4; }
+.staff-grid { max-width: 1100px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; margin: 0 auto; padding: 0; list-style: none; }
+.staff-card { display: flex; flex-direction: column; overflow: hidden; border-radius: 18px; background: #fff; box-shadow: 0 1px 2px rgb(11 39 71 / 8%), 0 28px 50px -26px rgb(11 39 71 / 55%); }
+.staff-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #e9eef4; }
+.staff-photo::after { content: ""; position: absolute; inset: auto 0 0; height: 30%; background: linear-gradient(to top, rgb(11 39 71 / 22%), transparent); pointer-events: none; }
 .staff-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.staff-body { flex: 1; padding: 18px 20px 22px; border-top: 3px solid var(--orange); text-align: center; }
-.staff-body .staff-name { margin: 0 0 4px; color: #162f53; font-size: 19px; line-height: 1.35; }
-.staff-body .staff-title { margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-.staff-body .staff-slogan { margin: 0; color: var(--ink); font-size: 15px; font-style: italic; line-height: 1.6; text-wrap: balance; }
+.staff-body { position: relative; flex: 1; padding: 26px 24px 28px; text-align: center; }
+.staff-body::before { content: ""; position: absolute; top: -2px; left: 50%; width: 56px; height: 4px; border-radius: 4px; background: var(--orange); transform: translateX(-50%); }
+.staff-body .staff-name { margin: 0 0 6px; color: #0b2747; font-size: 21px; font-weight: 700; line-height: 1.3; letter-spacing: .005em; }
+.staff-body .staff-title { margin: 0 0 16px; color: #b4530f; font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.staff-body .staff-slogan { position: relative; margin: 0; padding-top: 16px; color: #3a4a5e; font-size: 15.5px; font-style: italic; line-height: 1.65; }
+.staff-body .staff-slogan::before { content: ""; position: absolute; top: 0; left: 50%; width: 28px; height: 1px; background: #d5dde7; transform: translateX(-50%); }
 .staff-slogan-part { display: block; text-wrap: balance; }
 .about-intro .staff-grid { margin-top: 40px; }
 .text-link { color: var(--blue); font-weight: 700; }
@@ -592,16 +605,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .about-teaser-inner { grid-template-columns: 1fr; gap: 12px; padding: 20px 18px; }
   .about-teaser-mark { width: 56px; height: 56px; }
   .about-teaser-heading { font-size: 18px; }
-  .about-teaser .staff-grid { margin-top: 22px; }
   .about-intro .staff-grid { margin-top: 28px; }
-  /* Điện thoại: thẻ ngang (ảnh 120px bên trái, chữ bên phải) xếp chồng – gọn hơn 3 ảnh dọc toàn chiều rộng. */
-  .staff-grid { grid-template-columns: 1fr; gap: 14px; }
-  .staff-card { display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: stretch; }
-  .staff-photo { aspect-ratio: auto; min-height: 150px; }
-  .staff-body { display: flex; flex-direction: column; justify-content: center; padding: 14px 16px; border-top: 0; border-left: 3px solid var(--orange); text-align: left; }
-  .staff-body .staff-name { font-size: 16.5px; }
-  .staff-body .staff-title { margin-bottom: 8px; font-size: 13px; letter-spacing: 0; text-transform: none; }
-  .staff-body .staff-slogan { font-size: 14px; line-height: 1.55; }
+  /* Điện thoại: thẻ dọc cỡ lớn xếp chồng (ảnh là điểm nhấn); dải navy chỉ phủ phần đầu thẻ đầu tiên. */
+  .about-staff { margin-top: 32px; padding: 48px 0 52px; }
+  .about-staff::before { height: 300px; }
+  .about-staff::after { top: 20px; }
+  .staff-grid { max-width: 420px; grid-template-columns: 1fr; gap: 22px; }
+  .staff-card { border-radius: 16px; }
+  .staff-body { padding: 22px 20px 24px; }
+  .staff-body .staff-name { font-size: 20px; }
+  .staff-body .staff-slogan { font-size: 15px; }
   .page-banner { padding-block: 26px 30px; }
   .about-quote { padding-block: 36px 0; }
   .about-quote blockquote { padding: 26px 16px 18px; }
@@ -796,8 +809,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .service-card:hover .service-icon img { transform: rotate(-8deg) scale(1.04); }
   .workflow-card:hover .workflow-image img, .workflow-card:focus-visible .workflow-image img { transform: translate3d(0, -5px, 0) scale(1.05); }
   /* Thẻ nhân sự không phải link → không nâng thẻ, chỉ ảnh phóng nhẹ. */
-  .staff-photo img { transition: transform .8s var(--ease-out-quint); }
-  .staff-card:hover .staff-photo img { transform: scale(1.04); }
+  /* Thẻ nhân sự: nâng nhẹ (thuộc tính translate riêng, không đè transform của chuyển động xuất hiện) + ảnh phóng chậm trong khung. */
+  .staff-card { transition: translate .6s var(--ease-out-quint), box-shadow .6s var(--ease-out-quint); }
+  .staff-card:hover { translate: 0 -6px; box-shadow: 0 1px 2px rgb(11 39 71 / 8%), 0 36px 60px -26px rgb(11 39 71 / 62%); }
+  .staff-photo img { transition: transform 1.6s var(--ease-out-quint); }
+  .staff-card:hover .staff-photo img { transform: scale(1.06); }
 }
 
 /* Keyframe blur kết thúc bằng blur(0), KHÔNG dùng `filter: none`: WebKit (Safari engine) crash khi nội suy blur() → none trong @keyframes.
