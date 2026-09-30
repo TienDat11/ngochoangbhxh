@@ -1,5 +1,5 @@
 /**
- * Nhân sự hiển thị ở mục "Về chúng tôi" (trang chủ) và trang Giới thiệu.
+ * Nhân sự hiển thị ở trang Giới thiệu (/gioi-thieu/).
  * Họ tên, chức danh và slogan do khách hàng cung cấp (29/09/2026) – giữ nguyên văn, không thêm thông tin khác.
  * Ảnh: `public/staff/<photo>-{360,540,720}.webp` (khung 4:5 cắt quanh gương mặt từ ảnh gốc khách gửi).
  */

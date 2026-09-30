@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Fragment, type CSSProperties } from "react";
+import { ABOUT_SLOGAN } from "@/data/about";
 import { COMPANY, ROUTES } from "@/data/site";
 import { getPublicAssetPath } from "@/lib/site-paths";
 import { HeroParallax } from "@/components/HeroParallax";
@@ -34,7 +35,7 @@ export function Hero() {
       <div className="container hero-inner">
         <div className="hero-content">
           <HeroTitle />
-          <p className="hero-tagline">Điểm tựa cho khởi đầu – Hài hòa cùng thịnh vượng</p>
+          <p className="hero-tagline">{ABOUT_SLOGAN}</p>
           <div className="hero-actions">
             <Link className="button button-orange hero-cta" href={ROUTES.contact}>Tư vấn ngay</Link>
             <a className="hero-phone" href={COMPANY.hotlineHref}>

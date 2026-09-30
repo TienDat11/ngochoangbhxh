@@ -29,12 +29,13 @@ import { COMPANY, ROUTES } from "@/data/site";
 import { getPublicAssetPath } from "@/lib/site-paths";
 import { pageMetadata, routeToPath } from "@/lib/seo";
 
-// Title và description lấy nguyên văn tài liệu Word của khách hàng (tiêu đề tài liệu viết thường theo câu; khẩu hiệu +
-// phương châm, xem data/about.ts), không tự viết thêm. Title đã có tên công ty nên dùng absoluteTitle (không ghép
+// Title lấy nguyên văn tài liệu Word của khách hàng (tiêu đề tài liệu viết thường theo câu); description ghép từ khẩu hiệu
+// + vế đầu phương châm trong data/about.ts (bản khách cập nhật 30/09/2026), không tự viết thêm. Title đã có tên công ty nên dùng absoluteTitle (không ghép
 // " | Ngọc Hoàng" lần nữa); 54 ký tự ≤ 60.
 const title = "Giới thiệu về Công ty TNHH Tư vấn & Dịch vụ Ngọc Hoàng";
-const description =
-  "Điểm tựa cho khởi đầu – Hài hòa cùng thịnh vượng. Phục vụ Khách hàng bằng cả trái tim, đem đến cho Khách hàng sự an tâm tuyệt đối.";
+// → "Khởi đầu vững chắc – Vươn tới thịnh vượng. Phục vụ Khách hàng bằng cả trái tim, đem đến cho Khách hàng sự an tâm
+// tuyệt đối." (123 ký tự).
+const description = `${ABOUT_SLOGAN}. ${ABOUT_MOTTO[0].replace(/,$/, ".")}`;
 
 const PATH = routeToPath(ROUTES.about);
 
