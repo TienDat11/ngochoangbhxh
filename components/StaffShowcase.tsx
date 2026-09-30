@@ -22,7 +22,7 @@ function sloganLines(slogan: string) {
 }
 
 /**
- * Thẻ nhân sự (ảnh, họ tên, chức danh, slogan) – dùng ở trang chủ (mục "Về chúng tôi") và trang Giới thiệu.
+ * Thẻ nhân sự (ảnh, họ tên, chức danh, slogan) – chỉ dùng ở trang Giới thiệu (/gioi-thieu/).
  * Ảnh nằm dưới màn hình đầu → loading="lazy"; `sizes` khớp bố cục trong globals.css (.staff-grid):
  * ≤760px thẻ dọc toàn chiều rộng (tối đa 420px); từ 761px lưới 3 cột trong khung tối đa 1100px (khe 30px).
  */

@@ -190,23 +190,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .section-title { display: flex; align-items: center; justify-content: center; gap: 18px; }
 .section-title::before,
 .section-title::after { content: ""; flex: 1 1 40px; min-width: 40px; height: 2px; border-radius: 2px; background: currentColor; opacity: .18; }
-.about-teaser { background: #fff; }
-.about-teaser.section-space { padding-bottom: 0; } /* dải nhân sự (.about-staff) tự có lề dưới */
-.about-teaser-inner { max-width: 980px; margin-inline: auto; display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 28px; padding: 28px 32px; border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 6px; background: #fbfcfe; }
-.about-teaser-mark { width: 96px; height: 96px; object-fit: contain; }
-.about-teaser-heading { margin: 0 0 6px; color: var(--blue); font-size: 20px; line-height: 1.35; }
-.about-teaser-slogan { margin: 0 0 6px; color: var(--orange); font-size: 17px; font-weight: 700; font-style: italic; }
-.about-teaser-inner p { margin: 0 0 10px; font-size: 15px; line-height: 1.65; }
-/* Dải nhân sự trang chủ (.about-staff): nửa trên xanh navy (chấm mờ + quầng cam), nửa dưới nền sáng; thẻ nằm vắt qua ranh giới
-   nên là tâm điểm của mục. Trang trí thuần CSS (gradient), không ảnh nền. */
-.about-staff { position: relative; isolation: isolate; margin-top: 44px; padding: 64px 0 76px; background: #f3f7fc; }
-.about-staff::before { content: ""; position: absolute; z-index: -1; inset: 0 0 auto; height: 62%;
-  background:
-    radial-gradient(circle at 88% 18%, rgb(244 119 33 / 30%), transparent 34%),
-    radial-gradient(circle at 8% 90%, rgb(255 255 255 / 9%), transparent 30%),
-    radial-gradient(rgb(255 255 255 / 11%) 1px, transparent 1.6px) 0 0 / 22px 22px,
-    linear-gradient(155deg, #0b2747 0%, #123f72 55%, #105caa 100%); }
-.about-staff::after { content: ""; position: absolute; z-index: -1; top: 26px; left: 50%; width: 64px; height: 3px; border-radius: 3px; background: var(--orange); transform: translateX(-50%); }
 /* Thẻ nhân sự (components/StaffShowcase.tsx): ảnh chân dung 4:5 lớn, chữ căn giữa, chi tiết cam; ≤760px thẻ dọc xếp chồng.
    Chữ trong thẻ dùng `.staff-body .staff-*` để không bị kiểu `p` của section chứa (vd. .about-intro p) đè. */
 .staff-grid { max-width: 1100px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; margin: 0 auto; padding: 0; list-style: none; }
@@ -604,14 +587,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .service-icon img { width: 36px; height: 36px; }
   .service-card h3 { font-size: 15px; }
   .service-points li { font-size: 14px; }
-  .about-teaser-inner { grid-template-columns: 1fr; gap: 12px; padding: 20px 18px; }
-  .about-teaser-mark { width: 56px; height: 56px; }
-  .about-teaser-heading { font-size: 18px; }
   .about-intro .staff-grid { margin-top: 28px; }
-  /* Điện thoại: thẻ dọc cỡ lớn xếp chồng (ảnh là điểm nhấn); dải navy chỉ phủ phần đầu thẻ đầu tiên. */
-  .about-staff { margin-top: 32px; padding: 48px 0 52px; }
-  .about-staff::before { height: 300px; }
-  .about-staff::after { top: 20px; }
+  /* Điện thoại: thẻ dọc cỡ lớn xếp chồng (ảnh là điểm nhấn). */
   .staff-grid { max-width: 420px; grid-template-columns: 1fr; gap: 22px; }
   .staff-card { border-radius: 16px; }
   .staff-body { padding: 22px 20px 24px; }
@@ -761,15 +738,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   [data-motion="title"].is-revealed::before,
   [data-motion="title"].is-revealed::after { transition: transform 1.05s var(--ease-out-expo) calc(var(--m-delay) + 300ms); }
 
-  /* Thẻ dịch vụ: icon "bật" nhẹ (lò xo nhỏ), các dòng mô tả hiện lần lượt. Khối giới thiệu: logo xoay vào. */
+  /* Thẻ dịch vụ: icon "bật" nhẹ (lò xo nhỏ), các dòng mô tả hiện lần lượt. */
   [data-motion="card"].reveal-pending:not(.is-revealed) .service-icon { opacity: 0; transform: scale(.5) rotate(-20deg); }
   [data-motion="card"].is-revealed .service-icon { transition: opacity .5s var(--ease-out-quint) calc(var(--m-delay) + 240ms), transform .95s var(--ease-spring) calc(var(--m-delay) + 240ms); }
   [data-motion="card"].reveal-pending:not(.is-revealed) :is(.service-points li, .service-more) { opacity: 0; transform: translate3d(-12px, 0, 0); }
   [data-motion="card"].is-revealed :is(.service-points li, .service-more) {
     transition: opacity .6s var(--ease-out-quint) calc(var(--m-delay) + 340ms + var(--n, 0) * 70ms), transform .85s var(--ease-out-expo) calc(var(--m-delay) + 340ms + var(--n, 0) * 70ms);
   }
-  [data-motion="card"].reveal-pending:not(.is-revealed) .about-teaser-mark { opacity: 0; transform: rotate(-70deg) scale(.6); }
-  [data-motion="card"].is-revealed .about-teaser-mark { transition: opacity .6s var(--ease-out-quint) calc(var(--m-delay) + 200ms), transform 1.2s var(--ease-out-expo) calc(var(--m-delay) + 200ms); }
 
   /* Quy trình 01→04: khối màu số quét từ trái sang, số hiện + đếm lên, icon bật nhẹ. */
   .workflow-image::before { clip-path: inset(0); }
